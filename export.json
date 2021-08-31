@@ -1,0 +1,2108 @@
+{
+    "cmsType": "sanity",
+    "staticDir": "static",
+    "pagesDir": "src/pages",
+    "dataDir": "src/data",
+    "uploadDir": "images",
+    "pageContentFieldKey": "content",
+    "objectTypeKey": "type",
+    "dataset": "production",
+    "models": [
+        {
+            "type": "config",
+            "label": "Site Configuration",
+            "fields": [
+                {
+                    "type": "string",
+                    "name": "title",
+                    "label": "Title",
+                    "description": "Site title",
+                    "required": true
+                },
+                {
+                    "type": "string",
+                    "name": "domain",
+                    "label": "Domain",
+                    "description": "The domain of your site, including the protocol, e.g. https://mysite.com/"
+                },
+                {
+                    "type": "image",
+                    "name": "favicon",
+                    "label": "Favicon",
+                    "description": "A square icon that represents your website."
+                },
+                {
+                    "type": "enum",
+                    "name": "layout_style",
+                    "label": "Layout Style",
+                    "description": "The style of the theme layout.",
+                    "options": [
+                        "simple",
+                        "overflow"
+                    ],
+                    "default": "simple",
+                    "required": true
+                },
+                {
+                    "type": "enum",
+                    "name": "palette",
+                    "label": "Color Palette",
+                    "description": "The color palette used for the site.",
+                    "options": [
+                        "blue",
+                        "green",
+                        "orange",
+                        "violet"
+                    ],
+                    "default": "green",
+                    "required": true
+                },
+                {
+                    "type": "model",
+                    "name": "header",
+                    "label": "Header Configuration",
+                    "models": [
+                        "header"
+                    ]
+                },
+                {
+                    "type": "model",
+                    "name": "footer",
+                    "label": "Footer Configuration",
+                    "models": [
+                        "footer"
+                    ]
+                },
+                {
+                    "type": "string",
+                    "name": "stackbit_file_path",
+                    "label": "Config File Path",
+                    "description": "The file path of the configuration file",
+                    "const": "site-metadata.json",
+                    "hidden": true
+                },
+                {
+                    "type": "string",
+                    "name": "stackbit_model_type",
+                    "label": "Stackbit Model Type",
+                    "description": "Stackbit model type",
+                    "const": "config",
+                    "hidden": true
+                }
+            ],
+            "name": "config",
+            "hideContent": true
+        },
+        {
+            "type": "object",
+            "label": "Header Configuration",
+            "labelField": "title",
+            "fields": [
+                {
+                    "type": "string",
+                    "name": "title",
+                    "label": "Header Title",
+                    "description": "The title displayed on the left side. If value is not set, the author name will be used."
+                },
+                {
+                    "type": "string",
+                    "name": "tagline",
+                    "label": "Header Tagline",
+                    "description": "The tagline displayed on the left side."
+                },
+                {
+                    "type": "image",
+                    "name": "profile_img",
+                    "label": "Profile Image",
+                    "description": "The author profile image displayed on the left side."
+                },
+                {
+                    "type": "string",
+                    "name": "profile_img_alt",
+                    "label": "Profile Image Alt Text",
+                    "description": "The alt text of the author profile image."
+                },
+                {
+                    "type": "enum",
+                    "name": "background",
+                    "label": "Background",
+                    "description": "The background of the left side.",
+                    "options": [
+                        "dark",
+                        "light"
+                    ],
+                    "default": "dark"
+                },
+                {
+                    "type": "boolean",
+                    "name": "has_nav",
+                    "label": "Enable Navigation Menu",
+                    "description": "Display the navigation menu bar on the left side.",
+                    "default": true
+                },
+                {
+                    "type": "list",
+                    "name": "nav_links",
+                    "label": "Navigation Links",
+                    "description": "List of navigation links.",
+                    "items": {
+                        "type": "model",
+                        "models": [
+                            "action"
+                        ]
+                    }
+                },
+                {
+                    "type": "boolean",
+                    "name": "has_social",
+                    "label": "Enable Social Links",
+                    "description": "Display social links on the left side.",
+                    "default": true
+                },
+                {
+                    "type": "list",
+                    "name": "social_links",
+                    "label": "Social Links",
+                    "description": "List of social links on the left side.",
+                    "items": {
+                        "type": "model",
+                        "models": [
+                            "action"
+                        ]
+                    }
+                },
+                {
+                    "type": "string",
+                    "name": "type",
+                    "label": "Object Type",
+                    "description": "The type of the object",
+                    "const": "header",
+                    "hidden": true
+                },
+                {
+                    "type": "string",
+                    "name": "stackbit_model_type",
+                    "label": "Stackbit Model Type",
+                    "description": "Stackbit model type",
+                    "const": "object",
+                    "hidden": true
+                }
+            ],
+            "name": "header",
+            "hideContent": true
+        },
+        {
+            "type": "object",
+            "label": "Footer Configuration",
+            "labelField": "content",
+            "fields": [
+                {
+                    "type": "string",
+                    "name": "content",
+                    "label": "Footer Content",
+                    "description": "The copyright text displayed in the footer."
+                },
+                {
+                    "type": "list",
+                    "name": "links",
+                    "label": "Links",
+                    "description": "List of links in the footer.",
+                    "items": {
+                        "type": "model",
+                        "models": [
+                            "action"
+                        ]
+                    }
+                },
+                {
+                    "type": "string",
+                    "name": "type",
+                    "label": "Object Type",
+                    "description": "The type of the object",
+                    "const": "footer",
+                    "hidden": true
+                },
+                {
+                    "type": "string",
+                    "name": "stackbit_model_type",
+                    "label": "Stackbit Model Type",
+                    "description": "Stackbit model type",
+                    "const": "object",
+                    "hidden": true
+                }
+            ],
+            "name": "footer",
+            "hideContent": true
+        },
+        {
+            "type": "page",
+            "label": "Advanced Page",
+            "layout": "advanced",
+            "hideContent": true,
+            "fields": [
+                {
+                    "type": "string",
+                    "name": "title",
+                    "label": "Title",
+                    "description": "The title of the page.",
+                    "required": true
+                },
+                {
+                    "type": "boolean",
+                    "name": "hide_title",
+                    "label": "Hide page title",
+                    "default": true
+                },
+                {
+                    "type": "string",
+                    "name": "excerpt",
+                    "label": "Excerpt",
+                    "description": "The excerpt of the page displayed in meta data."
+                },
+                {
+                    "type": "list",
+                    "name": "sections",
+                    "label": "Sections",
+                    "description": "Page sections",
+                    "items": {
+                        "type": "model",
+                        "models": [
+                            "section_content",
+                            "section_form",
+                            "section_hero",
+                            "section_posts"
+                        ]
+                    }
+                },
+                {
+                    "type": "model",
+                    "name": "seo",
+                    "models": [
+                        "stackbit_page_meta"
+                    ],
+                    "label": "Seo"
+                },
+                {
+                    "type": "string",
+                    "name": "template",
+                    "label": "Template",
+                    "const": "advanced",
+                    "hidden": true
+                },
+                {
+                    "type": "string",
+                    "name": "stackbit_url_path",
+                    "label": "URL Path",
+                    "description": "The URL path of this page relative to site root. For example, the site root page would be \"/\", and post page would be \"posts/new-post/\"",
+                    "required": true
+                },
+                {
+                    "type": "string",
+                    "name": "stackbit_model_type",
+                    "label": "Stackbit Model Type",
+                    "description": "Stackbit model type",
+                    "const": "page",
+                    "hidden": true
+                }
+            ],
+            "name": "advanced"
+        },
+        {
+            "type": "page",
+            "urlPath": "/blog",
+            "label": "Blog",
+            "layout": "blog",
+            "file": "blog/index.md",
+            "hideContent": true,
+            "singleInstance": true,
+            "fields": [
+                {
+                    "type": "string",
+                    "name": "title",
+                    "label": "Title",
+                    "description": "The title of the page.",
+                    "required": true
+                },
+                {
+                    "type": "model",
+                    "name": "seo",
+                    "models": [
+                        "stackbit_page_meta"
+                    ],
+                    "label": "Seo"
+                },
+                {
+                    "type": "string",
+                    "name": "template",
+                    "label": "Template",
+                    "const": "blog",
+                    "hidden": true
+                },
+                {
+                    "type": "string",
+                    "name": "stackbit_url_path",
+                    "label": "URL Path",
+                    "description": "The URL path of this page relative to site root. For example, the site root page would be \"/\", and post page would be \"posts/new-post/\"",
+                    "required": true
+                },
+                {
+                    "type": "string",
+                    "name": "stackbit_model_type",
+                    "label": "Stackbit Model Type",
+                    "description": "Stackbit model type",
+                    "const": "page",
+                    "hidden": true
+                }
+            ],
+            "name": "blog"
+        },
+        {
+            "type": "page",
+            "label": "Page",
+            "layout": "page",
+            "exclude": "posts/**",
+            "fields": [
+                {
+                    "type": "string",
+                    "name": "title",
+                    "label": "Title",
+                    "description": "The title of the page",
+                    "required": true
+                },
+                {
+                    "type": "string",
+                    "name": "subtitle",
+                    "label": "Subtitle",
+                    "description": "The text shown just below the page title."
+                },
+                {
+                    "type": "image",
+                    "name": "img_path",
+                    "label": "Image",
+                    "description": "The image shown below the page title and subtitle."
+                },
+                {
+                    "type": "string",
+                    "name": "img_alt",
+                    "label": "Image Alt Text",
+                    "description": "The alt text of the image."
+                },
+                {
+                    "type": "model",
+                    "name": "seo",
+                    "models": [
+                        "stackbit_page_meta"
+                    ],
+                    "label": "Seo"
+                },
+                {
+                    "type": "string",
+                    "name": "template",
+                    "label": "Template",
+                    "const": "page",
+                    "hidden": true
+                },
+                {
+                    "type": "string",
+                    "name": "stackbit_url_path",
+                    "label": "URL Path",
+                    "description": "The URL path of this page relative to site root. For example, the site root page would be \"/\", and post page would be \"posts/new-post/\"",
+                    "required": true
+                },
+                {
+                    "type": "markdown",
+                    "name": "content",
+                    "label": "Content",
+                    "description": "Page content"
+                },
+                {
+                    "type": "string",
+                    "name": "stackbit_model_type",
+                    "label": "Stackbit Model Type",
+                    "description": "Stackbit model type",
+                    "const": "page",
+                    "hidden": true
+                }
+            ],
+            "name": "page"
+        },
+        {
+            "type": "page",
+            "urlPath": "/posts/{slug}",
+            "label": "Post",
+            "layout": "post",
+            "folder": "posts",
+            "fields": [
+                {
+                    "type": "string",
+                    "name": "title",
+                    "label": "Title",
+                    "description": "The title of the post.",
+                    "required": true
+                },
+                {
+                    "type": "string",
+                    "name": "subtitle",
+                    "label": "Subtitle",
+                    "description": "The text shown just below the post title."
+                },
+                {
+                    "type": "date",
+                    "name": "date",
+                    "label": "Date",
+                    "required": true
+                },
+                {
+                    "type": "image",
+                    "name": "thumb_img_path",
+                    "label": "Image (blog feed)",
+                    "description": "The image shown in the blog feed."
+                },
+                {
+                    "type": "string",
+                    "name": "thumb_img_alt",
+                    "label": "Image alt text (blog feed)",
+                    "description": "The alt text of the blog feed image."
+                },
+                {
+                    "type": "image",
+                    "name": "content_img_path",
+                    "label": "Image (single post)",
+                    "description": "The image shown in the single post."
+                },
+                {
+                    "type": "string",
+                    "name": "content_img_alt",
+                    "label": "Image alt text (single post)",
+                    "description": "The alt text of the single post image."
+                },
+                {
+                    "type": "string",
+                    "name": "excerpt",
+                    "label": "Excerpt",
+                    "description": "The excerpt of the post displayed in the blog feed."
+                },
+                {
+                    "type": "model",
+                    "name": "seo",
+                    "models": [
+                        "stackbit_page_meta"
+                    ],
+                    "label": "Seo"
+                },
+                {
+                    "type": "string",
+                    "name": "template",
+                    "label": "Template",
+                    "const": "post",
+                    "hidden": true
+                },
+                {
+                    "type": "string",
+                    "name": "stackbit_url_path",
+                    "label": "URL Path",
+                    "description": "The URL path of this page relative to site root. For example, the site root page would be \"/\", and post page would be \"posts/new-post/\"",
+                    "required": true
+                },
+                {
+                    "type": "markdown",
+                    "name": "content",
+                    "label": "Content",
+                    "description": "Page content"
+                },
+                {
+                    "type": "string",
+                    "name": "stackbit_model_type",
+                    "label": "Stackbit Model Type",
+                    "description": "Stackbit model type",
+                    "const": "page",
+                    "hidden": true
+                }
+            ],
+            "name": "post"
+        },
+        {
+            "type": "object",
+            "label": "Hero Section",
+            "fields": [
+                {
+                    "type": "string",
+                    "name": "title",
+                    "label": "Title",
+                    "description": "The title of the section."
+                },
+                {
+                    "type": "string",
+                    "name": "section_id",
+                    "label": "Element ID",
+                    "description": "A unique identifier that can be used when linking to this section. Must not contain whitespace."
+                },
+                {
+                    "type": "markdown",
+                    "name": "content",
+                    "label": "Content",
+                    "description": "The text content of the section."
+                },
+                {
+                    "type": "list",
+                    "name": "actions",
+                    "label": "Action Buttons",
+                    "items": {
+                        "type": "model",
+                        "models": [
+                            "action"
+                        ]
+                    }
+                },
+                {
+                    "type": "string",
+                    "name": "type",
+                    "label": "Object Type",
+                    "description": "The type of the object",
+                    "const": "section_hero",
+                    "hidden": true
+                },
+                {
+                    "type": "string",
+                    "name": "stackbit_model_type",
+                    "label": "Stackbit Model Type",
+                    "description": "Stackbit model type",
+                    "const": "object",
+                    "hidden": true
+                }
+            ],
+            "name": "section_hero",
+            "labelField": "title",
+            "hideContent": true
+        },
+        {
+            "type": "object",
+            "label": "Content Section",
+            "fields": [
+                {
+                    "type": "string",
+                    "name": "title",
+                    "label": "Title",
+                    "description": "The title of the section."
+                },
+                {
+                    "type": "string",
+                    "name": "section_id",
+                    "label": "Element ID",
+                    "description": "A unique identifier that can be used when linking to this section. Must not contain whitespace."
+                },
+                {
+                    "type": "image",
+                    "name": "image",
+                    "label": "Image",
+                    "description": "The image of the section."
+                },
+                {
+                    "type": "string",
+                    "name": "image_alt",
+                    "label": "Image alt text",
+                    "description": "The alt text of the section image."
+                },
+                {
+                    "type": "markdown",
+                    "name": "content",
+                    "label": "Content",
+                    "description": "The text content of the section."
+                },
+                {
+                    "type": "list",
+                    "name": "actions",
+                    "label": "Action Buttons",
+                    "items": {
+                        "type": "model",
+                        "models": [
+                            "action"
+                        ]
+                    }
+                },
+                {
+                    "type": "string",
+                    "name": "type",
+                    "label": "Object Type",
+                    "description": "The type of the object",
+                    "const": "section_content",
+                    "hidden": true
+                },
+                {
+                    "type": "string",
+                    "name": "stackbit_model_type",
+                    "label": "Stackbit Model Type",
+                    "description": "Stackbit model type",
+                    "const": "object",
+                    "hidden": true
+                }
+            ],
+            "name": "section_content",
+            "labelField": "title",
+            "hideContent": true
+        },
+        {
+            "type": "object",
+            "label": "Posts Section",
+            "fields": [
+                {
+                    "type": "string",
+                    "name": "title",
+                    "label": "Title",
+                    "description": "The title of the section."
+                },
+                {
+                    "type": "string",
+                    "name": "section_id",
+                    "label": "Element ID",
+                    "description": "A unique identifier that can be used when linking to this section. Must not contain whitespace."
+                },
+                {
+                    "type": "number",
+                    "name": "posts_number",
+                    "label": "Number of posts to display",
+                    "required": true
+                },
+                {
+                    "type": "list",
+                    "name": "actions",
+                    "label": "Action Buttons",
+                    "items": {
+                        "type": "model",
+                        "models": [
+                            "action"
+                        ]
+                    }
+                },
+                {
+                    "type": "string",
+                    "name": "type",
+                    "label": "Object Type",
+                    "description": "The type of the object",
+                    "const": "section_posts",
+                    "hidden": true
+                },
+                {
+                    "type": "string",
+                    "name": "stackbit_model_type",
+                    "label": "Stackbit Model Type",
+                    "description": "Stackbit model type",
+                    "const": "object",
+                    "hidden": true
+                }
+            ],
+            "name": "section_posts",
+            "labelField": "title",
+            "hideContent": true
+        },
+        {
+            "type": "object",
+            "label": "Form Section",
+            "fields": [
+                {
+                    "type": "string",
+                    "name": "title",
+                    "label": "Title",
+                    "description": "The title of the section."
+                },
+                {
+                    "type": "string",
+                    "name": "section_id",
+                    "label": "Element ID",
+                    "description": "A unique identifier that can be used when linking to this section. Must not contain whitespace."
+                },
+                {
+                    "type": "markdown",
+                    "name": "content",
+                    "label": "Content",
+                    "description": "The text content of the section."
+                },
+                {
+                    "type": "string",
+                    "name": "form_id",
+                    "label": "Form ID",
+                    "description": "A unique identifier of the form. Must not contain whitespace.",
+                    "required": true
+                },
+                {
+                    "type": "string",
+                    "name": "form_action",
+                    "label": "Form Action",
+                    "description": "The path of your custom \"success\" page, if you want to replace the default success message."
+                },
+                {
+                    "type": "list",
+                    "name": "form_fields",
+                    "label": "Form Fields",
+                    "items": {
+                        "type": "model",
+                        "models": [
+                            "form_field"
+                        ]
+                    }
+                },
+                {
+                    "type": "string",
+                    "name": "submit_label",
+                    "label": "Submit Button Label",
+                    "required": true
+                },
+                {
+                    "type": "string",
+                    "name": "type",
+                    "label": "Object Type",
+                    "description": "The type of the object",
+                    "const": "section_form",
+                    "hidden": true
+                },
+                {
+                    "type": "string",
+                    "name": "stackbit_model_type",
+                    "label": "Stackbit Model Type",
+                    "description": "Stackbit model type",
+                    "const": "object",
+                    "hidden": true
+                }
+            ],
+            "name": "section_form",
+            "labelField": "title",
+            "hideContent": true
+        },
+        {
+            "type": "object",
+            "label": "Action",
+            "labelField": "label",
+            "fields": [
+                {
+                    "type": "string",
+                    "name": "label",
+                    "label": "Label",
+                    "required": true
+                },
+                {
+                    "type": "string",
+                    "name": "url",
+                    "label": "URL",
+                    "required": true,
+                    "default": "#"
+                },
+                {
+                    "type": "enum",
+                    "name": "style",
+                    "label": "Style",
+                    "options": [
+                        "link",
+                        "button",
+                        "icon"
+                    ],
+                    "default": "link",
+                    "required": true
+                },
+                {
+                    "type": "enum",
+                    "name": "icon_class",
+                    "label": "Icon",
+                    "options": [
+                        "dev",
+                        "facebook",
+                        "github",
+                        "instagram",
+                        "linkedin",
+                        "pinterest",
+                        "reddit",
+                        "twitter",
+                        "vimeo",
+                        "youtube"
+                    ],
+                    "default": "dev"
+                },
+                {
+                    "type": "boolean",
+                    "name": "new_window",
+                    "label": "Open in new tab/window",
+                    "default": false
+                },
+                {
+                    "type": "boolean",
+                    "name": "no_follow",
+                    "label": "No follow",
+                    "default": false,
+                    "description": "Add rel=\"nofollow\" attribute to the link"
+                },
+                {
+                    "type": "string",
+                    "name": "type",
+                    "label": "Object Type",
+                    "description": "The type of the object",
+                    "const": "action",
+                    "hidden": true
+                },
+                {
+                    "type": "string",
+                    "name": "stackbit_model_type",
+                    "label": "Stackbit Model Type",
+                    "description": "Stackbit model type",
+                    "const": "object",
+                    "hidden": true
+                }
+            ],
+            "name": "action",
+            "hideContent": true
+        },
+        {
+            "type": "object",
+            "label": "Form Field",
+            "labelField": "name",
+            "fields": [
+                {
+                    "type": "enum",
+                    "name": "input_type",
+                    "label": "Type",
+                    "options": [
+                        "text",
+                        "email",
+                        "tel",
+                        "number",
+                        "checkbox",
+                        "textarea",
+                        "select"
+                    ],
+                    "description": "Type of the form field.",
+                    "required": true
+                },
+                {
+                    "type": "string",
+                    "name": "name",
+                    "label": "Name",
+                    "description": "The name of the field, submitted with the form.",
+                    "required": true
+                },
+                {
+                    "type": "string",
+                    "name": "label",
+                    "label": "Label",
+                    "description": "The caption of the field, shown above the field input."
+                },
+                {
+                    "type": "string",
+                    "name": "default_value",
+                    "description": "The default value for textual field types.",
+                    "label": "Default Value"
+                },
+                {
+                    "type": "list",
+                    "name": "options",
+                    "description": "The list of options, used only when the field type is \"select\".",
+                    "label": "Options",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "type": "boolean",
+                    "name": "is_required",
+                    "label": "Is the field required?",
+                    "default": false
+                },
+                {
+                    "type": "string",
+                    "name": "type",
+                    "label": "Object Type",
+                    "description": "The type of the object",
+                    "const": "form_field",
+                    "hidden": true
+                },
+                {
+                    "type": "string",
+                    "name": "stackbit_model_type",
+                    "label": "Stackbit Model Type",
+                    "description": "Stackbit model type",
+                    "const": "object",
+                    "hidden": true
+                }
+            ],
+            "name": "form_field",
+            "hideContent": true
+        },
+        {
+            "type": "object",
+            "label": "Page meta data",
+            "fields": [
+                {
+                    "type": "string",
+                    "name": "title",
+                    "label": "Title",
+                    "description": "The page title that goes into the <title> tag",
+                    "default": ""
+                },
+                {
+                    "type": "string",
+                    "name": "description",
+                    "label": "Description",
+                    "description": "The page description that goes into the <meta name=\"description\"> tag",
+                    "default": ""
+                },
+                {
+                    "type": "list",
+                    "name": "robots",
+                    "label": "Robots",
+                    "description": "The items that go into the <meta name=\"robots\"> tag",
+                    "items": {
+                        "type": "enum",
+                        "options": [
+                            "all",
+                            "index",
+                            "follow",
+                            "noindex",
+                            "nofollow",
+                            "noimageindex",
+                            "notranslate",
+                            "none"
+                        ]
+                    }
+                },
+                {
+                    "type": "list",
+                    "name": "extra",
+                    "label": "Extra",
+                    "description": "Additional definition for specific meta tags such as open-graph, twitter, etc.",
+                    "items": {
+                        "type": "object",
+                        "labelField": "name",
+                        "fields": [
+                            {
+                                "type": "string",
+                                "name": "name",
+                                "default": "",
+                                "label": "Name"
+                            },
+                            {
+                                "type": "string",
+                                "name": "value",
+                                "default": "",
+                                "label": "Value"
+                            },
+                            {
+                                "type": "string",
+                                "name": "keyName",
+                                "default": "name",
+                                "label": "Key Name"
+                            },
+                            {
+                                "type": "boolean",
+                                "name": "relativeUrl",
+                                "label": "Relative Url"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "string",
+                    "name": "type",
+                    "label": "Object Type",
+                    "description": "The type of the object",
+                    "const": "stackbit_page_meta",
+                    "hidden": true
+                },
+                {
+                    "type": "string",
+                    "name": "stackbit_model_type",
+                    "label": "Stackbit Model Type",
+                    "description": "Stackbit model type",
+                    "const": "object",
+                    "hidden": true
+                }
+            ],
+            "name": "stackbit_page_meta",
+            "hideContent": true
+        }
+    ],
+    "content": [
+        {
+            "modelType": "config",
+            "modelName": "config",
+            "relPath": "site-metadata.json",
+            "data": {
+                "stackbit_model_type": "config",
+                "title": "Stackbit Fresh Theme",
+                "layout_style": "overflow",
+                "palette": "blue",
+                "header": {
+                    "type": "header",
+                    "title": "Stackbit Fresh",
+                    "tagline": "Header Tagline",
+                    "profile_img": "images/avatar.png",
+                    "profile_img_alt": "Author avatar",
+                    "background": "dark",
+                    "has_nav": true,
+                    "nav_links": [
+                        {
+                            "type": "action",
+                            "label": "Home",
+                            "url": "/",
+                            "style": "link",
+                            "stackbit_model_type": "object"
+                        },
+                        {
+                            "type": "action",
+                            "label": "Blog",
+                            "url": "/blog/",
+                            "style": "link",
+                            "stackbit_model_type": "object"
+                        },
+                        {
+                            "type": "action",
+                            "label": "Style Guide",
+                            "url": "/style-guide/",
+                            "style": "link",
+                            "stackbit_model_type": "object"
+                        },
+                        {
+                            "type": "action",
+                            "label": "About",
+                            "url": "/about/",
+                            "style": "link",
+                            "stackbit_model_type": "object"
+                        },
+                        {
+                            "type": "action",
+                            "label": "Contact",
+                            "url": "/contact/",
+                            "style": "link",
+                            "stackbit_model_type": "object"
+                        }
+                    ],
+                    "has_social": true,
+                    "social_links": [
+                        {
+                            "type": "action",
+                            "label": "Twitter",
+                            "url": "https://twitter.com/",
+                            "style": "icon",
+                            "icon_class": "twitter",
+                            "new_window": true,
+                            "stackbit_model_type": "object"
+                        },
+                        {
+                            "type": "action",
+                            "label": "Instagram",
+                            "url": "https://www.instagram.com/",
+                            "style": "icon",
+                            "icon_class": "instagram",
+                            "new_window": true,
+                            "stackbit_model_type": "object"
+                        },
+                        {
+                            "type": "action",
+                            "label": "GitHub",
+                            "url": "https://github.com/",
+                            "style": "icon",
+                            "icon_class": "github",
+                            "new_window": true,
+                            "stackbit_model_type": "object"
+                        },
+                        {
+                            "type": "action",
+                            "label": "LinkedIn",
+                            "url": "https://www.linkedin.com/",
+                            "style": "icon",
+                            "icon_class": "linkedin",
+                            "new_window": true,
+                            "stackbit_model_type": "object"
+                        },
+                        {
+                            "type": "action",
+                            "label": "DEV",
+                            "url": "https://dev.to/",
+                            "style": "icon",
+                            "icon_class": "dev",
+                            "new_window": true,
+                            "stackbit_model_type": "object"
+                        }
+                    ],
+                    "stackbit_model_type": "object"
+                },
+                "footer": {
+                    "type": "footer",
+                    "content": "&copy; Stackbit. All rights reserved. This Jamstack site was created with <a href=\"https://www.stackbit.com/?utm_source=deployed-footer\" target=\"_blank\" rel=\"noopener\">Stackbit</a>. Create yours <a href=\"https://app.stackbit.com/create?theme=fresh&utm_source=deployed-footer\" target=\"_blank\" rel=\"noopener\">now</a>",
+                    "stackbit_model_type": "object"
+                },
+                "stackbit_file_path": "site-metadata.json"
+            }
+        },
+        {
+            "modelType": "page",
+            "modelName": "page",
+            "relPath": "about.md",
+            "data": {
+                "stackbit_model_type": "page",
+                "title": "About Me",
+                "subtitle": "This is a short page about me and my work.",
+                "img_path": "images/about.jpg",
+                "img_alt": "Portrait of a man with beard and mustache",
+                "seo": {
+                    "type": "stackbit_page_meta",
+                    "title": "About Me",
+                    "description": "This is the about me page",
+                    "extra": [
+                        {
+                            "name": "og:type",
+                            "value": "website",
+                            "keyName": "property"
+                        },
+                        {
+                            "name": "og:title",
+                            "value": "About Me",
+                            "keyName": "property"
+                        },
+                        {
+                            "name": "og:description",
+                            "value": "This is the about me page",
+                            "keyName": "property"
+                        },
+                        {
+                            "name": "og:image",
+                            "value": "images/about.jpg",
+                            "keyName": "property",
+                            "relativeUrl": true
+                        },
+                        {
+                            "name": "twitter:card",
+                            "value": "summary_large_image"
+                        },
+                        {
+                            "name": "twitter:title",
+                            "value": "About Me"
+                        },
+                        {
+                            "name": "twitter:description",
+                            "value": "This is the about me page"
+                        },
+                        {
+                            "name": "twitter:image",
+                            "value": "images/about.jpg",
+                            "relativeUrl": true
+                        }
+                    ],
+                    "stackbit_model_type": "object"
+                },
+                "template": "page",
+                "stackbit_url_path": "/about",
+                "content": "\n**John Doe** is a Senior Art Director from [Stockholm](https://en.wikipedia.org/wiki/Stockholm), Sweden. After graduating from The College of Visual Arts with a degree in Communication Design, he worked for three small graphic design shops where he honed his design style and sensibility.\n\nHis work has been recognized by Communication Arts, Print, How, ID, IdN, AIGA, Effie, Archive, Graphis, AdFed and Rockport. Graphic Design USA named him a person to watch in 2019.\n\n>The world always seems brighter when you’ve just made something that wasn’t there before. <cite>Neil Gaiman</cite>\n\nAs a hobby, John Doe authors the most influential design blog in Sweden with over 100,000 page views a month. He lives in Stockholm with his beautiful wife and two boys.\n\n*Thank You for reading!*\n"
+            }
+        },
+        {
+            "modelType": "page",
+            "modelName": "blog",
+            "relPath": "blog/index.md",
+            "data": {
+                "stackbit_model_type": "page",
+                "title": "Blog",
+                "seo": {
+                    "type": "stackbit_page_meta",
+                    "title": "Blog",
+                    "description": "This is the blog page",
+                    "extra": [
+                        {
+                            "name": "og:type",
+                            "value": "website",
+                            "keyName": "property"
+                        },
+                        {
+                            "name": "og:title",
+                            "value": "Blog",
+                            "keyName": "property"
+                        },
+                        {
+                            "name": "og:description",
+                            "value": "This is the blog page",
+                            "keyName": "property"
+                        },
+                        {
+                            "name": "og:image",
+                            "value": "images/1.jpg",
+                            "keyName": "property",
+                            "relativeUrl": true
+                        },
+                        {
+                            "name": "twitter:card",
+                            "value": "summary_large_image"
+                        },
+                        {
+                            "name": "twitter:title",
+                            "value": "Blog"
+                        },
+                        {
+                            "name": "twitter:description",
+                            "value": "This is the blog page"
+                        },
+                        {
+                            "name": "twitter:image",
+                            "value": "images/1.jpg",
+                            "relativeUrl": true
+                        }
+                    ],
+                    "stackbit_model_type": "object"
+                },
+                "template": "blog",
+                "stackbit_url_path": "/blog/"
+            }
+        },
+        {
+            "modelType": "page",
+            "modelName": "advanced",
+            "relPath": "contact.md",
+            "data": {
+                "stackbit_model_type": "page",
+                "title": "Contact",
+                "hide_title": false,
+                "sections": [
+                    {
+                        "type": "section_form",
+                        "section_id": "contact-form",
+                        "content": "To get in touch please fill the form below.",
+                        "form_id": "contactForm",
+                        "form_action": "/thank-you",
+                        "form_fields": [
+                            {
+                                "type": "form_field",
+                                "input_type": "text",
+                                "name": "name",
+                                "label": "Name",
+                                "default_value": "Your name",
+                                "is_required": true,
+                                "stackbit_model_type": "object"
+                            },
+                            {
+                                "type": "form_field",
+                                "input_type": "email",
+                                "name": "email",
+                                "label": "Email",
+                                "default_value": "Your email address",
+                                "is_required": true,
+                                "stackbit_model_type": "object"
+                            },
+                            {
+                                "type": "form_field",
+                                "input_type": "select",
+                                "name": "subject",
+                                "label": "Subject",
+                                "default_value": "Please select",
+                                "options": [
+                                    "Error on the site",
+                                    "Sponsorship",
+                                    "Other"
+                                ],
+                                "stackbit_model_type": "object"
+                            },
+                            {
+                                "type": "form_field",
+                                "input_type": "textarea",
+                                "name": "message",
+                                "label": "Message",
+                                "default_value": "Your message",
+                                "stackbit_model_type": "object"
+                            },
+                            {
+                                "type": "form_field",
+                                "input_type": "checkbox",
+                                "name": "consent",
+                                "label": "I understand that this form is storing my submitted information so I can be contacted.",
+                                "stackbit_model_type": "object"
+                            }
+                        ],
+                        "submit_label": "Send Message",
+                        "stackbit_model_type": "object"
+                    }
+                ],
+                "seo": {
+                    "type": "stackbit_page_meta",
+                    "title": "Contact",
+                    "description": "This is the contact page",
+                    "extra": [
+                        {
+                            "name": "og:type",
+                            "value": "website",
+                            "keyName": "property"
+                        },
+                        {
+                            "name": "og:title",
+                            "value": "Contact",
+                            "keyName": "property"
+                        },
+                        {
+                            "name": "og:description",
+                            "value": "This is the contact page",
+                            "keyName": "property"
+                        },
+                        {
+                            "name": "twitter:card",
+                            "value": "summary"
+                        },
+                        {
+                            "name": "twitter:title",
+                            "value": "Contact"
+                        },
+                        {
+                            "name": "twitter:description",
+                            "value": "This is the contact page"
+                        }
+                    ],
+                    "stackbit_model_type": "object"
+                },
+                "template": "advanced",
+                "stackbit_url_path": "/contact"
+            }
+        },
+        {
+            "modelType": "page",
+            "modelName": "advanced",
+            "relPath": "index.md",
+            "data": {
+                "stackbit_model_type": "page",
+                "title": "Home",
+                "hide_title": true,
+                "sections": [
+                    {
+                        "type": "section_hero",
+                        "title": "Hi, I'm Stackbit Fresh.",
+                        "section_id": "hero",
+                        "content": "This section can contain a subtitle or tagline. The recommended length is one to three sentences, but can be changed as you prefer.",
+                        "stackbit_model_type": "object"
+                    },
+                    {
+                        "type": "section_content",
+                        "title": "About",
+                        "section_id": "about",
+                        "content": "This is the \"about\" excerpt. It can be used to provide a paragraph about yourself that people can read on the homepage to get a sense of who you are. There also exists a dedicated about page where you can write more about yourself for those who are interested.",
+                        "actions": [
+                            {
+                                "type": "action",
+                                "label": "Contact Me",
+                                "url": "/contact",
+                                "style": "button",
+                                "stackbit_model_type": "object"
+                            }
+                        ],
+                        "stackbit_model_type": "object"
+                    },
+                    {
+                        "type": "section_posts",
+                        "title": "Recent Posts",
+                        "section_id": "recent-posts",
+                        "posts_number": 4,
+                        "actions": [
+                            {
+                                "type": "action",
+                                "label": "View Blog",
+                                "url": "blog/index.html",
+                                "style": "button",
+                                "stackbit_model_type": "object"
+                            }
+                        ],
+                        "stackbit_model_type": "object"
+                    }
+                ],
+                "seo": {
+                    "type": "stackbit_page_meta",
+                    "title": "Stackbit Fresh Theme",
+                    "description": "The preview of the Fresh theme",
+                    "extra": [
+                        {
+                            "name": "og:type",
+                            "value": "website",
+                            "keyName": "property"
+                        },
+                        {
+                            "name": "og:title",
+                            "value": "Stackbit Fresh Theme",
+                            "keyName": "property"
+                        },
+                        {
+                            "name": "og:description",
+                            "value": "The preview of the Fresh theme",
+                            "keyName": "property"
+                        },
+                        {
+                            "name": "og:image",
+                            "value": "images/4.jpg",
+                            "keyName": "property",
+                            "relativeUrl": true
+                        },
+                        {
+                            "name": "twitter:card",
+                            "value": "summary_large_image"
+                        },
+                        {
+                            "name": "twitter:title",
+                            "value": "Stackbit Fresh Theme"
+                        },
+                        {
+                            "name": "twitter:description",
+                            "value": "The preview of the Fresh theme"
+                        },
+                        {
+                            "name": "twitter:image",
+                            "value": "images/4.jpg",
+                            "relativeUrl": true
+                        }
+                    ],
+                    "stackbit_model_type": "object"
+                },
+                "template": "advanced",
+                "stackbit_url_path": "/"
+            }
+        },
+        {
+            "modelType": "page",
+            "modelName": "post",
+            "relPath": "posts/basic-rules-for-walking-in-the-mountains.md",
+            "data": {
+                "stackbit_model_type": "page",
+                "title": "Basic Rules For Walking In The Mountains",
+                "date": "2018-01-09",
+                "thumb_img_path": "images/6.jpg",
+                "thumb_img_alt": "Hikers on the trail",
+                "content_img_path": "images/6.jpg",
+                "content_img_alt": "Hikers on the trail",
+                "excerpt": "Hiking can sometimes involves bushwhacking and hiking is sometimes referred to as such. This specifically refers to difficult walking through dense forest, undergrowth, or bushes, where forward progress requires pushing vegetation aside.",
+                "seo": {
+                    "type": "stackbit_page_meta",
+                    "title": "Basic Rules For Walking In The Mountains",
+                    "description": "Hiking refers to difficult walking through dense forest, undergrowth, or bushes.",
+                    "extra": [
+                        {
+                            "name": "og:type",
+                            "value": "article",
+                            "keyName": "property"
+                        },
+                        {
+                            "name": "og:title",
+                            "value": "Basic Rules For Walking In The Mountains",
+                            "keyName": "property"
+                        },
+                        {
+                            "name": "og:description",
+                            "value": "Hiking refers to difficult walking through dense forest, undergrowth, or bushes.",
+                            "keyName": "property"
+                        },
+                        {
+                            "name": "og:image",
+                            "value": "images/6.jpg",
+                            "keyName": "property",
+                            "relativeUrl": true
+                        },
+                        {
+                            "name": "twitter:card",
+                            "value": "summary_large_image"
+                        },
+                        {
+                            "name": "twitter:title",
+                            "value": "Basic Rules For Walking In The Mountains"
+                        },
+                        {
+                            "name": "twitter:description",
+                            "value": "Hiking refers to difficult walking through dense forest, undergrowth, or bushes."
+                        },
+                        {
+                            "name": "twitter:image",
+                            "value": "images/6.jpg",
+                            "relativeUrl": true
+                        }
+                    ],
+                    "stackbit_model_type": "object"
+                },
+                "template": "post",
+                "stackbit_url_path": "/posts/basic-rules-for-walking-in-the-mountains",
+                "content": "\nPhoto by [David Marcu.](https://unsplash.com/photos/wcHCzgo0_mQ)\n\nIn the United States, Canada, the Republic of Ireland, and United Kingdom, **hiking** refers to walking outdoors on a trail, or off trail, for recreational purposes. A day hike refers to a hike that can be completed in a single day. However, in the United Kingdom, the word walking is also used, as well as rambling, while walking in mountainous areas is called hillwalking. In Northern England, Including the Lake District and Yorkshire Dales, fellwalking describes hill or mountain walks, as fell is the common word for both features there.\n\nHiking can sometimes involves bushwhacking and hiking is sometimes referred to as such. This specifically refers to difficult walking through dense forest, undergrowth, or bushes, where forward progress requires pushing vegetation aside. In extreme cases of bushwhacking, where the vegetation is so dense that human passage is impeded, a machete is used to clear a pathway. The Australian term bushwalking refers to both on and off-trail hiking. Common terms for hiking used by [New Zealanders](https://en.wikipedia.org/wiki/New_Zealand) are tramping (particularly for overnight and longer trips), walking or bushwalking. Trekking is the preferred word used to describe multi-day hiking in the mountainous regions of India, Pakistan, Nepal, North America, South America, Iran and in the highlands of East Africa. Hiking a long-distance trail from end-to-end is also referred to as trekking and as thru-hiking in some places. In North America, multi-day hikes, usually with camping, are referred to as [backpacking](https://en.wikipedia.org/wiki/Backpacking_(wilderness)).\n\n## Long Distance Hiking\n\nFrequently nowadays long distance hikes (walking tours) are undertaken along long distance paths, including the National Trails in England and Wales, the National Trail System in the USA and The Grande Randonnée (France), Grote Routepaden, or Lange-afstand-wandelpaden (Holland), Grande Rota (Portugal), Gran Recorrido (Spain) is a network of long-distance footpaths in Europe, mostly in France, Belgium, the Netherlands and Spain. There are extensive networks in other European countries of long distance trails, as well as in Canada, Australia, New Zealand, Nepal, and to a lesser extent other Asiatic countries, like Turkey, Israel, and Jordan. In the Alps of Austria, Slovenia, Switzerland, Germany, France, and Italy walking tours are often made from 'hut-to-hut', using an extensive system of mountain huts.\n\nIn the late 20th-century there has been a proliferation of official and unofficial long distance routes, which mean that hikers now are more likely to refer to using a long distance way (Britain), trail (USA), The Grande Randonnée (France), etc., than setting out on a walking tour. Early examples of long distance paths, include the Appalachian Trail in the USA and the Pennine Way in Britain. Pilgrimage routes are now treated, by some walkers, as long distance routes, and the route taken by the British National Trail the North Downs Way closely follows that of the Pilgrims' Way to Canterbury. Hiking times can be estimated by Naismith's rule or Tobler's hiking function.\n\n## Equipment\n\nThe equipment required for hiking depends on the length of the hike, but day hikers generally carry at least water, food, a map, and rain-proof gear. Hikers usually wear sturdy hiking boots for mountain walking and backpacking, as protection from the rough terrain, as well as providing increased stability. The Mountaineers club recommends a list of \"Ten Essentials\" equipment for hiking, including a compass, sunglasses, sunscreen, a flashlight, a first aid kit, a fire starter, and a knife. Other groups recommend items such as hat, gloves, insect repellent, and an emergency blanket. A GPS navigation device can also be helpful and route cards may be used as a guide.\n\n> Returning home is the most difficult part of long-distance hiking; You have grown outside the puzzle and your piece no longer fits. ― Cindy Ross\n\nProponents of ultralight backpacking argue that long lists of required items for multi-day hikes increases pack weight, and hence fatigue and the chance of injury. Instead, they recommend reducing pack weight, in order to make hiking long distances easier. Even the use of hiking boots on long-distances hikes is controversial among ultralight hikers, because of their weight.\n\n## Environmental Impact\n\nNatural environments are often fragile, and may be accidentally damaged, especially when a large number of hikers are involved. For example, years of gathering wood can strip an alpine area of valuable nutrients. and some species, such as martens or bighorn sheep, are very sensitive to the presence of humans, especially around mating season. Generally, protected areas such as parks have regulations in place to protect the environment, so as to minimize such impact. Such regulations include banning wood fires, restricting camping to established camp sites, disposing or packing out faecal matter, and imposing a quota on the number of hikers. Many hikers espouse the philosophy of Leave No Trace, following strict practices on dealing with food waste, food packaging, and other impact on the environment.\n\nHuman waste is often a major source of environmental impact from hiking, and can contaminate the watershed and make other hikers ill. 'Catholes' dug 10 to 25 cm (4 to 10 inches) deep, depending on local soil composition and covered after use, at least 60 m (200 feet) away from water sources and trails, are recommended to reduce the risk of bacterial contamination. [Source](https://en.wikipedia.org/wiki/Hiking)\n"
+            }
+        },
+        {
+            "modelType": "page",
+            "modelName": "post",
+            "relPath": "posts/best-waves-surfing-spain.md",
+            "data": {
+                "stackbit_model_type": "page",
+                "title": "Best Waves - Surfing In Spain",
+                "subtitle": "A intresting tale about Surfing",
+                "date": "2018-01-15",
+                "thumb_img_path": "images/4.jpg",
+                "thumb_img_alt": "Three person about to surf",
+                "content_img_path": "images/4.jpg",
+                "content_img_alt": "Three person about to surf",
+                "excerpt": "Surfing is a surface water sport in which the wave rider, referred to as a surfer, rides on the forward or deep face of a moving wave, which is usually carrying the surfer towards the shore.",
+                "seo": {
+                    "type": "stackbit_page_meta",
+                    "title": "Best Waves - Surfing In Spain",
+                    "description": "A intresting tale about Surfing",
+                    "extra": [
+                        {
+                            "name": "og:type",
+                            "value": "article",
+                            "keyName": "property"
+                        },
+                        {
+                            "name": "og:title",
+                            "value": "Best Waves - Surfing In Spain",
+                            "keyName": "property"
+                        },
+                        {
+                            "name": "og:description",
+                            "value": "A intresting tale about Surfing",
+                            "keyName": "property"
+                        },
+                        {
+                            "name": "og:image",
+                            "value": "images/4.jpg",
+                            "keyName": "property",
+                            "relativeUrl": true
+                        },
+                        {
+                            "name": "twitter:card",
+                            "value": "summary_large_image"
+                        },
+                        {
+                            "name": "twitter:title",
+                            "value": "Best Waves - Surfing In Spain"
+                        },
+                        {
+                            "name": "twitter:description",
+                            "value": "A intresting tale about Surfing"
+                        },
+                        {
+                            "name": "twitter:image",
+                            "value": "images/4.jpg",
+                            "relativeUrl": true
+                        }
+                    ],
+                    "stackbit_model_type": "object"
+                },
+                "template": "post",
+                "stackbit_url_path": "/posts/best-waves-surfing-spain",
+                "content": "\nPhoto by [George Sultan.](https://www.pexels.com/photo/three-person-about-to-surf-1768784/)\n\n**Surfing** is a surface water sport in which the wave rider, referred to as a surfer, rides on the forward or deep face of a moving wave, which is usually carrying the surfer towards the shore. Waves suitable for surfing are primarily found in the ocean, but can also be found in lakes or in rivers in the form of a standing wave or tidal bore. However, surfers can also utilize artificial waves such as those from boat wakes and the waves created in artificial wave pools.\n\n>\"Your surfing can get better on every turn, on every wave you catch. Learn to read the ocean better. A big part of my success has been wave knowledge.\" - Kelly Slater\n\nSynchronised surfing, Manly Beach, New South Wales, 1938–46 The term surfing refers to the act of riding a wave, regardless of whether the wave is ridden with a board or without a board, and regardless of the stance used. The native peoples of the Pacific, for instance, surfed waves on alaia, paipo, and other such craft, and did so on their belly and knees. The modern-day definition of surfing, however, most often refers to a surfer riding a wave standing up on a surfboard; this is also referred to as stand-up surfing.\n\n<iframe src=\"https://player.vimeo.com/video/31830780\" width=\"640\" height=\"360\" frameborder=\"0\" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>\n<a href=\"https://vimeo.com/31830780\">Hey Ho Let&#039;s Go Surfing</a> from <a href=\"https://vimeo.com/nathanoldfield\">Nathan Oldfield</a> on <a href=\"https://vimeo.com\">Vimeo</a>.\n\nAnother prominent form of surfing is body boarding, when a surfer rides a wave on a bodyboard, either lying on their belly, drop knee, or sometimes even standing up on a body board. Other types of surfing include knee boarding, surf matting (riding inflatable mats), and using foils. Body surfing, where the wave is surfed without a board, using the surfer's own body to catch and ride the wave, is very common and is considered by some to be the purest form of surfing.\n\nThree major subdivisions within standing-up surfing are long boarding and short boarding and these two have several major differences, including the board design and length, the riding style, and the kind of wave that is ridden.\n\nIn tow-in surfing (most often, but not exclusively, associated with big wave surfing), a motorized water vehicle, such as a personal watercraft, tows the surfer into the wave front, helping the surfer match a large wave's speed, which is generally a higher speed than a self-propelled surfer can produce. Surfing-related sports such as paddle boarding and sea kayaking do not require waves, and other derivative sports such as kite surfing and windsurfing rely primarily on wind for power, yet all of these platforms may also be used to ride waves. Recently with the use of V-drive boats, Wakesurfing, in which one surfs on the wake of a boat, has emerged. The Guinness Book of World Records recognized a 78 feet (23.8 m) wave ride by Garrett McNamara at Nazaré, Portugal as the largest wave ever surfed, although this remains an issue of much contention amongst many surfers, given the difficulty of measuring a constantly changing mound of water\n"
+            }
+        },
+        {
+            "modelType": "page",
+            "modelName": "post",
+            "relPath": "posts/fox-village-in-japan.md",
+            "data": {
+                "stackbit_model_type": "page",
+                "title": "Fox Village In Japan",
+                "subtitle": "Apparently, Japan is covered in magical and irresistibly cute animal sanctuaries.",
+                "date": "2018-01-11",
+                "thumb_img_path": "images/5.jpg",
+                "thumb_img_alt": "A red fox in a rocky forest",
+                "content_img_path": "images/5.jpg",
+                "content_img_alt": "A red fox in a rocky forest",
+                "excerpt": "Miyagi Zao Fox Village, aka Kitsune Mura, is a popular tourist attraction situated in Shiroishi, Miyagi it based in the Miyagi Zao mountains. Visitors can visit a village where there is a vast population of foxes.",
+                "seo": {
+                    "type": "stackbit_page_meta",
+                    "title": "Fox Village In Japan",
+                    "description": "Apparently, Japan is covered in magical and irresistibly cute animal sanctuaries.",
+                    "extra": [
+                        {
+                            "name": "og:type",
+                            "value": "article",
+                            "keyName": "property"
+                        },
+                        {
+                            "name": "og:title",
+                            "value": "Fox Village In Japan",
+                            "keyName": "property"
+                        },
+                        {
+                            "name": "og:description",
+                            "value": "Apparently, Japan is covered in magical and irresistibly cute animal sanctuaries.",
+                            "keyName": "property"
+                        },
+                        {
+                            "name": "og:image",
+                            "value": "images/5.jpg",
+                            "keyName": "property",
+                            "relativeUrl": true
+                        },
+                        {
+                            "name": "twitter:card",
+                            "value": "summary_large_image"
+                        },
+                        {
+                            "name": "twitter:title",
+                            "value": "Fox Village In Japan"
+                        },
+                        {
+                            "name": "twitter:description",
+                            "value": "Apparently, Japan is covered in magical and irresistibly cute animal sanctuaries."
+                        },
+                        {
+                            "name": "twitter:image",
+                            "value": "images/5.jpg",
+                            "relativeUrl": true
+                        }
+                    ],
+                    "stackbit_model_type": "object"
+                },
+                "template": "post",
+                "stackbit_url_path": "/posts/fox-village-in-japan",
+                "content": "\nPhoto by [Katerina Bartosova.](https://unsplash.com/photos/SAfJ1eTBeyk)\n\n**Fox Village** in hac habitasse platea dictumst. Nullam vehicula justo in libero fermentum, sed tincidunt mi ultrices. Nulla id nunc a ipsum faucibus feugiat ac eu dui. Cras sollicitudin viverra justo, ut aliquet nisl vestibulum eu. In hac habitasse platea dictumst. Quisque sit amet mollis enim. Nulla facilisi. Maecenas sed facilisis metus, volutpat maximus lacus. Duis magna odio, congue dictum nulla id, elementum hendrerit ex. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\n\n>The fox never found a better messenger than himself.\n\nDonec neque lorem, sodales non fermentum et, aliquam quis erat. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla tincidunt justo eu ante ultrices posuere. Duis cursus at massa ac tempus. Morbi sit amet mi sit amet lorem ullamcorper feugiat ac et dolor. Nullam rhoncus urna tincidunt odio ultricies, at dapibus felis facilisis. Ut condimentum nulla eget feugiat finibus. Suspendisse sit amet purus a eros dignissim commodo ut a erat. Maecenas pretium velit faucibus, porttitor lacus eu, eleifend sapien. In hac habitasse platea dictumst. Pellentesque nisi nisl, consectetur a accumsan sit amet, finibus vel nibh. Vivamus aliquet urna non turpis vehicula maximus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis ege\n\n>The fox changes his fur but not his habits.\n\nSuspendisse sit amet purus a eros dignissim commodo ut a erat. Maecenas pretium velit faucibus, porttitor lacus eu, eleifend sapien. In hac habitasse platea dictumst. Pellentesque nisi nisl, consectetur a accumsan sit amet, finibus vel nibh. Vivamus aliquet urna non turpis vehicula maximus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis ege.\n\nIn hac habitasse platea dictumst. Nullam vehicula justo in libero fermentum, sed tincidunt mi ultrices. Nulla id nunc a ipsum faucibus feugiat ac eu dui. Cras sollicitudin viverra justo, ut aliquet nisl vestibulum eu. In hac habitasse platea dictumst. Quisque sit amet mollis enim. Nulla facilisi. Maecenas sed facilisis metus, volutpat maximus lacus. Duis magna odio, congue dictum nulla id, elementum hendrerit ex. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\n"
+            }
+        },
+        {
+            "modelType": "page",
+            "modelName": "post",
+            "relPath": "posts/fragments-of-iceland.md",
+            "data": {
+                "stackbit_model_type": "page",
+                "title": "Fragments of Iceland",
+                "date": "2019-03-27",
+                "thumb_img_path": "images/7.jpg",
+                "thumb_img_alt": "Icelandic horses",
+                "content_img_path": "images/7.jpg",
+                "content_img_alt": "Icelandic horses",
+                "excerpt": "Iceland is a Nordic country between the North Atlantic and the Arctic Ocean. It has a population of 325,671 and an area of 103,000 km2 (40,000 sq mi), making it the most sparsely populated country in Europe.",
+                "seo": {
+                    "type": "stackbit_page_meta",
+                    "title": "Fragments of Iceland",
+                    "description": "Iceland is a Nordic country between the North Atlantic and the Arctic Ocean.",
+                    "extra": [
+                        {
+                            "name": "og:type",
+                            "value": "article",
+                            "keyName": "property"
+                        },
+                        {
+                            "name": "og:title",
+                            "value": "Fragments of Iceland",
+                            "keyName": "property"
+                        },
+                        {
+                            "name": "og:description",
+                            "value": "Iceland is a Nordic country between the North Atlantic and the Arctic Ocean.",
+                            "keyName": "property"
+                        },
+                        {
+                            "name": "og:image",
+                            "value": "images/7.jpg",
+                            "keyName": "property",
+                            "relativeUrl": true
+                        },
+                        {
+                            "name": "twitter:card",
+                            "value": "summary_large_image"
+                        },
+                        {
+                            "name": "twitter:title",
+                            "value": "Fragments of Iceland"
+                        },
+                        {
+                            "name": "twitter:description",
+                            "value": "Iceland is a Nordic country between the North Atlantic and the Arctic Ocean."
+                        },
+                        {
+                            "name": "twitter:image",
+                            "value": "images/7.jpg",
+                            "relativeUrl": true
+                        }
+                    ],
+                    "stackbit_model_type": "object"
+                },
+                "template": "post",
+                "stackbit_url_path": "/posts/fragments-of-iceland",
+                "content": "\nPhoto by [Anders Jildén](https://unsplash.com/photos/uO4Au3LrCtk)\n\n**Iceland** Enim nec dui nunc mattis enim ut tellus elementum sagittis. *Felis bibendum ut tristique et egestas quis ipsum suspendisse*. Est pellentesque elit ullamcorper dignissim cras tincidunt lobortis. Orci ac auctor augue mauris. Ut pharetra sit amet aliquam id diam. Lectus arcu bibendum at varius vel pharetra. Id nibh tortor id aliquet lectus proin nibh. Duis ut diam quam nulla porttitor massa id neque aliquam. Feugiat nibh sed pulvinar proin gravida. Dolor purus non enim praesent elementum. Pharetra convallis posuere morbi leo urna molestie. Vulputate enim nulla aliquet porttitor lacus luctus accumsan tortor posuere.\n\n> Iceland, I'm in love with that country, the people are incredible. - Kit Harington\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Consectetur adipiscing elit ut aliquam purus sit. Massa placerat duis ultricies lacus sed. Ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at. Pulvinar neque laoreet suspendisse interdum consectetur libero. Lacus viverra vitae congue eu consequat ac felis donec et. Imperdiet dui accumsan sit amet nulla facilisi. Faucibus turpis in eu mi bibendum neque. Magna etiam tempor orci eu. Cursus turpis massa tincidunt dui ut ornare. A condimentum vitae sapien pellentesque habitant. Ut porttitor leo a diam sollicitudin tempor id eu.\n\nPulvinar pellentesque habitant morbi tristique senectus et netus et. Suspendisse faucibus interdum posuere lorem ipsum dolor sit amet. Erat nam at lectus urna duis. Lacinia quis vel eros donec ac odio. Eget nulla facilisi etiam dignissim diam quis. Arcu dictum varius duis at consectetur lorem donec massa. Egestas tellus rutrum tellus pellentesque eu. Egestas erat imperdiet sed euismod nisi porta. Nec feugiat in fermentum posuere urna. Viverra ipsum nunc aliquet bibendum enim. Fermentum odio eu feugiat pretium. Vestibulum rhoncus est pellentesque elit. Elit ut aliquam purus sit amet luctus venenatis. Donec ac odio tempor orci dapibus ultrices in. Vitae justo eget magna fermentum. At tellus at urna condimentum mattis pellentesque id nibh tortor. Arcu dictum varius duis at consectetur lorem donec massa. Malesuada proin libero nunc consequat interdum varius sit amet. Dui accumsan sit amet nulla facilisi. Ut venenatis tellus in metus vulputate.\n"
+            }
+        },
+        {
+            "modelType": "page",
+            "modelName": "post",
+            "relPath": "posts/grand-canyon.md",
+            "data": {
+                "stackbit_model_type": "page",
+                "title": "Hiking The Grand Canyon",
+                "date": "2019-03-10",
+                "thumb_img_path": "images/8.jpg",
+                "thumb_img_alt": "Hikers on the trail",
+                "content_img_path": "images/8.jpg",
+                "content_img_alt": "Hikers on the trail",
+                "excerpt": "The Grand Canyon is a steep-sided canyon carved by the Colorado River in Arizona, United States. The Grand Canyon is 277 miles (446 km) long, up to 18 miles (29 km) wide and attains a depth of over a mile (6,093 feet or 1,857 meters).",
+                "seo": {
+                    "type": "stackbit_page_meta",
+                    "title": "Hiking The Grand Canyon",
+                    "description": "The Grand Canyon is a steep-sided canyon carved by the Colorado River in Arizona",
+                    "extra": [
+                        {
+                            "name": "og:type",
+                            "value": "article",
+                            "keyName": "property"
+                        },
+                        {
+                            "name": "og:title",
+                            "value": "Hiking The Grand Canyon",
+                            "keyName": "property"
+                        },
+                        {
+                            "name": "og:description",
+                            "value": "The Grand Canyon is a steep-sided canyon carved by the Colorado River in Arizona",
+                            "keyName": "property"
+                        },
+                        {
+                            "name": "og:image",
+                            "value": "images/8.jpg",
+                            "keyName": "property",
+                            "relativeUrl": true
+                        },
+                        {
+                            "name": "twitter:card",
+                            "value": "summary_large_image"
+                        },
+                        {
+                            "name": "twitter:title",
+                            "value": "Hiking The Grand Canyon"
+                        },
+                        {
+                            "name": "twitter:description",
+                            "value": "The Grand Canyon is a steep-sided canyon carved by the Colorado River in Arizona"
+                        },
+                        {
+                            "name": "twitter:image",
+                            "value": "images/8.jpg",
+                            "relativeUrl": true
+                        }
+                    ],
+                    "stackbit_model_type": "object"
+                },
+                "template": "post",
+                "stackbit_url_path": "/posts/grand-canyon",
+                "content": "\nPhoto by [Galen Crout.](https://unsplash.com/photos/fItRJ7AHak8)\n\nVis accumsan feugiat adipiscing nisl amet adipiscing accumsan blandit accumsan sapien blandit ac amet faucibus aliquet placerat commodo. Interdum ante aliquet commodo accumsan vis phasellus adipiscing. Ornare a in lacinia. Vestibulum accumsan ac metus massa tempor. Accumsan in lacinia ornare massa amet. Ac interdum ac non praesent. Cubilia lacinia interdum massa faucibus blandit nullam. Accumsan phasellus nunc integer. Accumsan euismod nunc adipiscing lacinia erat ut sit. Arcu amet. Id massa aliquet arcu accumsan lorem amet accumsan.\n\n## Long Distance Hiking\n\nAmet nibh adipiscing adipiscing. Commodo ante vis placerat interdum massa massa primis. Tempus condimentum tempus non ac varius cubilia adipiscing placerat lorem turpis at. Aliquet lorem porttitor interdum. Amet lacus. Aliquam lobortis faucibus blandit ac phasellus. In amet magna non interdum volutpat porttitor metus a ante ac neque. Nisi turpis. Commodo col. Interdum adipiscing mollis ut aliquam id ante adipiscing commodo integer arcu amet Ac interdum ac non praesent. Cubilia lacinia interdum massa faucibus blandit nullam. Accumsan phasellus nunc integer. Accumsan euismod nunc adipiscing lacinia erat ut sit. Arcu amet. Id massa aliquet arcu accumsan lorem amet accumsan commodo odio cubilia ac eu interdum placerat placerat arcu commodo lobortis adipiscing semper ornare pellentesque.\n\nAmet nibh adipiscing adipiscing. Commodo ante vis placerat interdum massa massa primis. Tempus condimentum tempus non ac varius cubilia adipiscing placerat lorem turpis at. Aliquet lorem porttitor interdum. Amet lacus. Aliquam lobortis faucibus blandit ac phasellus. In amet magna non interdum volutpat porttitor metus a ante ac neque. Nisi turpis. Commodo col. Interdum adipiscing mollis ut aliquam id ante adipiscing commodo integer arcu amet blandit adipiscing arcu ante.\n"
+            }
+        },
+        {
+            "modelType": "page",
+            "modelName": "post",
+            "relPath": "posts/interior-designer.md",
+            "data": {
+                "stackbit_model_type": "page",
+                "title": "How To Choose An Interior Designer",
+                "subtitle": "Interior design is “the art or process of designing the interior, often including the exterior, of a room or building”.",
+                "date": "2017-03-26",
+                "thumb_img_path": "images/1.jpg",
+                "thumb_img_alt": "A wooden table and white chairs",
+                "excerpt": "Interior design is “the art or process of designing the interior, often including the exterior, of a room or building”. An interior designer is someone who coordinates and manages such projects. Interior design is a multifaceted profession that includes conceptual development, communicating with the stakeholders of a project and the management and execution of the design.",
+                "seo": {
+                    "type": "stackbit_page_meta",
+                    "title": "How To Choose An Interior Designer",
+                    "description": "Interior design is “the art or process of designing the interior",
+                    "extra": [
+                        {
+                            "name": "og:type",
+                            "value": "article",
+                            "keyName": "property"
+                        },
+                        {
+                            "name": "og:title",
+                            "value": "How To Choose An Interior Designer",
+                            "keyName": "property"
+                        },
+                        {
+                            "name": "og:description",
+                            "value": "Interior design is “the art or process of designing the interior",
+                            "keyName": "property"
+                        },
+                        {
+                            "name": "og:image",
+                            "value": "images/1.jpg",
+                            "keyName": "property",
+                            "relativeUrl": true
+                        },
+                        {
+                            "name": "twitter:card",
+                            "value": "summary_large_image"
+                        },
+                        {
+                            "name": "twitter:title",
+                            "value": "How To Choose An Interior Designer"
+                        },
+                        {
+                            "name": "twitter:description",
+                            "value": "Interior design is “the art or process of designing the interior"
+                        },
+                        {
+                            "name": "twitter:image",
+                            "value": "images/1.jpg",
+                            "relativeUrl": true
+                        }
+                    ],
+                    "stackbit_model_type": "object"
+                },
+                "template": "post",
+                "stackbit_url_path": "/posts/interior-designer",
+                "content": "\nVis accumsan feugiat adipiscing nisl amet adipiscing accumsan blandit accumsan sapien blandit ac amet faucibus aliquet placerat commodo. Interdum ante aliquet commodo accumsan vis phasellus adipiscing. Ornare a in lacinia. Vestibulum accumsan ac metus massa tempor. Accumsan in lacinia ornare massa amet. Ac interdum ac non praesent. Cubilia lacinia interdum massa faucibus blandit nullam. Accumsan phasellus nunc integer. Accumsan euismod nunc adipiscing lacinia erat ut sit. Arcu amet. Id massa aliquet arcu accumsan lorem amet accumsan.\n\n> “Creativity is nothing but the way to solve new problems.”\n\nAmet nibh adipiscing adipiscing. Commodo ante vis placerat interdum massa massa primis. Tempus condimentum tempus non ac varius cubilia adipiscing placerat lorem turpis at. Aliquet lorem porttitor interdum. Amet lacus. Aliquam lobortis faucibus blandit ac phasellus. In amet magna non interdum volutpat porttitor metus a ante ac neque. Nisi turpis. Commodo col. Interdum adipiscing mollis ut aliquam id ante adipiscing commodo integer arcu amet Ac interdum ac non praesent. Cubilia lacinia interdum massa faucibus blandit nullam. Accumsan phasellus nunc integer. Accumsan euismod nunc adipiscing lacinia erat ut sit. Arcu amet. Id massa aliquet arcu accumsan lorem amet accumsan commodo odio cubilia ac eu interdum placerat placerat arcu commodo lobortis adipiscing semper ornare pellentesque.\n\nAmet nibh adipiscing adipiscing. Commodo ante vis placerat interdum massa massa primis. Tempus condimentum tempus non ac varius cubilia adipiscing placerat lorem turpis at. Aliquet lorem porttitor interdum. Amet lacus. Aliquam lobortis faucibus blandit ac phasellus. In amet magna non interdum volutpat porttitor metus a ante ac neque. Nisi turpis. Commodo col. Interdum adipiscing mollis ut aliquam id ante adipiscing commodo integer arcu amet blandit adipiscing arcu ante.\n"
+            }
+        },
+        {
+            "modelType": "page",
+            "modelName": "post",
+            "relPath": "posts/japan.md",
+            "data": {
+                "stackbit_model_type": "page",
+                "title": "Minimalist Travel - A Weekend in Japan",
+                "date": "2019-03-24",
+                "thumb_img_path": "images/2.jpg",
+                "thumb_img_alt": "Fushimi Inari Shrine in Kyoto",
+                "content_img_path": "images/2.jpg",
+                "content_img_alt": "Fushimi Inari Shrine in Kyoto",
+                "excerpt": "The Shrines of Ise have been celebrated as the prototype of Japanese architecture. Largely of wood, traditional housing and many temple buildings see the use of tatami mats and sliding doors that break down the distinction between rooms and indoor and outdoor space.",
+                "seo": {
+                    "type": "stackbit_page_meta",
+                    "title": "A Weekend in Japan",
+                    "description": "The Shrines of Ise have been celebrated as the prototype of Japanese architecture",
+                    "extra": [
+                        {
+                            "name": "og:type",
+                            "value": "article",
+                            "keyName": "property"
+                        },
+                        {
+                            "name": "og:title",
+                            "value": "A Weekend in Japan",
+                            "keyName": "property"
+                        },
+                        {
+                            "name": "og:description",
+                            "value": "The Shrines of Ise have been celebrated as the prototype of Japanese architecture",
+                            "keyName": "property"
+                        },
+                        {
+                            "name": "og:image",
+                            "value": "images/2.jpg",
+                            "keyName": "property",
+                            "relativeUrl": true
+                        },
+                        {
+                            "name": "twitter:card",
+                            "value": "summary_large_image"
+                        },
+                        {
+                            "name": "twitter:title",
+                            "value": "A Weekend in Japan"
+                        },
+                        {
+                            "name": "twitter:description",
+                            "value": "The Shrines of Ise have been celebrated as the prototype of Japanese architecture"
+                        },
+                        {
+                            "name": "twitter:image",
+                            "value": "images/2.jpg",
+                            "relativeUrl": true
+                        }
+                    ],
+                    "stackbit_model_type": "object"
+                },
+                "template": "post",
+                "stackbit_url_path": "/posts/japan",
+                "content": "\n**A Weekend in Japan** vis accumsan feugiat adipiscing nisl amet adipiscing accumsan blandit accumsan sapien blandit ac amet faucibus aliquet placerat commodo. Interdum ante aliquet commodo accumsan vis phasellus adipiscing. Ornare a in lacinia. Vestibulum accumsan ac metus massa tempor. Accumsan in lacinia ornare massa amet. Ac interdum ac non praesent. Cubilia lacinia interdum massa faucibus blandit nullam. Accumsan phasellus nunc integer. Accumsan euismod nunc adipiscing lacinia erat ut sit. Arcu amet. Id massa aliquet arcu accumsan lorem amet accumsan.\n\nAmet nibh adipiscing adipiscing. Commodo ante vis placerat interdum massa massa primis. Tempus condimentum tempus non ac varius cubilia adipiscing placerat lorem turpis at. Aliquet lorem porttitor interdum. Amet lacus. Aliquam lobortis faucibus blandit ac phasellus. In amet magna non interdum volutpat porttitor metus a ante ac neque. Nisi turpis. Commodo col. Interdum adipiscing mollis ut aliquam id ante adipiscing commodo integer arcu amet Ac interdum ac non praesent. Cubilia lacinia interdum massa faucibus blandit nullam. Accumsan phasellus nunc integer. Accumsan euismod nunc adipiscing lacinia erat ut sit. Arcu amet. Id massa aliquet arcu accumsan lorem amet accumsan commodo odio cubilia ac eu interdum placerat placerat arcu commodo lobortis adipiscing semper ornare pellentesque.\n\nAmet nibh adipiscing adipiscing. Commodo ante vis placerat interdum massa massa primis. Tempus condimentum tempus non ac varius cubilia adipiscing placerat lorem turpis at. Aliquet lorem porttitor interdum. Amet lacus. Aliquam lobortis faucibus blandit ac phasellus. In amet magna non interdum volutpat porttitor metus a ante ac neque. Nisi turpis. Commodo col. Interdum adipiscing mollis ut aliquam id ante adipiscing commodo integer arcu amet blandit adipiscing arcu ante.\n"
+            }
+        },
+        {
+            "modelType": "page",
+            "modelName": "post",
+            "relPath": "posts/the-ride-in-the-woods.md",
+            "data": {
+                "stackbit_model_type": "page",
+                "title": "The Ride In The Woods",
+                "subtitle": "A cautionary tale about riding",
+                "date": "2018-01-23",
+                "thumb_img_path": "images/3.jpg",
+                "thumb_img_alt": "A motorcycle in a forest",
+                "content_img_path": "images/3.jpg",
+                "content_img_alt": "A motorcycle in a forest",
+                "excerpt": "The Ride In The Woods lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
+                "seo": {
+                    "type": "stackbit_page_meta",
+                    "title": "The Ride In The Woods",
+                    "description": "A cautionary tale about riding",
+                    "extra": [
+                        {
+                            "name": "og:type",
+                            "value": "article",
+                            "keyName": "property"
+                        },
+                        {
+                            "name": "og:title",
+                            "value": "The Ride In The Woods",
+                            "keyName": "property"
+                        },
+                        {
+                            "name": "og:description",
+                            "value": "A cautionary tale about riding",
+                            "keyName": "property"
+                        },
+                        {
+                            "name": "og:image",
+                            "value": "images/3.jpg",
+                            "keyName": "property",
+                            "relativeUrl": true
+                        },
+                        {
+                            "name": "twitter:card",
+                            "value": "summary_large_image"
+                        },
+                        {
+                            "name": "twitter:title",
+                            "value": "The Ride In The Woods"
+                        },
+                        {
+                            "name": "twitter:description",
+                            "value": "A cautionary tale about riding"
+                        },
+                        {
+                            "name": "twitter:image",
+                            "value": "images/3.jpg",
+                            "relativeUrl": true
+                        }
+                    ],
+                    "stackbit_model_type": "object"
+                },
+                "template": "post",
+                "stackbit_url_path": "/posts/the-ride-in-the-woods",
+                "content": "\nThe Ride In The Woods lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nibh venenatis cras sed felis eget velit aliquet sagittis id. Pellentesque dignissim enim sit amet venenatis urna cursus. Faucibus turpis in eu mi bibendum neque egestas congue quisque. Hac habitasse platea dictumst vestibulum rhoncus est. Sit amet cursus sit amet. Habitant morbi tristique senectus et netus et. Dolor morbi non arcu risus quis. Dignissim diam quis enim lobortis. Sit amet cursus sit amet dictum. Senectus et netus et malesuada fames ac turpis egestas sed. Felis imperdiet proin fermentum leo vel orci porta non pulvinar. Malesuada pellentesque elit eget gravida. Elementum pulvinar etiam non quam lacus.\n\n## The Ride\n\nPurus sit amet luctus venenatis lectus magna fringilla urna. Lacus laoreet non curabitur gravida arcu ac. Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras. Pretium viverra suspendisse potenti nullam ac tortor vitae. Bibendum est ultricies integer quis auctor elit sed. Suscipit tellus mauris a diam maecenas. Interdum consectetur libero id faucibus nisl tincidunt eget. Velit egestas dui id ornare. Tincidunt eget nullam non nisi est sit amet facilisis. Nibh sed pulvinar proin gravida hendrerit. Vulputate mi sit amet mauris commodo quis imperdiet. Sit amet consectetur adipiscing elit pellentesque habitant. Amet tellus cras adipiscing enim eu turpis egestas. Leo duis ut diam quam nulla porttitor massa. Sit amet risus nullam eget felis. Sed viverra ipsum nunc aliquet. Enim praesent elementum facilisis leo. Amet mauris commodo quis imperdiet massa tincidunt.\n\n## Motorcycle\n\nCongue eu consequat ac felis donec et. Nulla facilisi cras fermentum odio eu feugiat. Non tellus orci ac auctor. Justo donec enim diam vulputate ut pharetra sit. Mauris vitae ultricies leo integer malesuada nunc vel risus. Nunc eget lorem dolor sed viverra ipsum nunc aliquet. Sit amet nisl suscipit adipiscing bibendum. Vitae suscipit tellus mauris a diam. Erat pellentesque adipiscing commodo elit. Amet consectetur adipiscing elit pellentesque habitant. Est ante in nibh mauris cursus mattis molestie a. Sem viverra aliquet eget sit amet tellus cras adipiscing enim. Etiam sit amet nisl purus in mollis.\n\nRisus pretium quam vulputate dignissim. Et pharetra pharetra massa massa ultricies mi quis hendrerit. Pharetra massa massa ultricies mi quis hendrerit dolor. Id eu nisl nunc mi ipsum faucibus vitae aliquet nec. Nunc sed velit dignissim sodales ut eu sem. Vel facilisis volutpat est velit egestas. Mauris pellentesque pulvinar pellentesque habitant morbi. Sit amet purus gravida quis blandit turpis cursus in. Nullam ac tortor vitae purus faucibus. Gravida dictum fusce ut placerat orci. Urna molestie at elementum eu facilisis sed odio. Blandit massa enim nec dui nunc mattis. Pellentesque massa placerat duis ultricies. Accumsan sit amet nulla facilisi morbi tempus iaculis urna. Orci porta non pulvinar neque laoreet. Duis ultricies lacus sed turpis tincidunt. Feugiat in ante metus dictum at tempor commodo ullamcorper. Risus nec feugiat in fermentum posuere urna."
+            }
+        },
+        {
+            "modelType": "page",
+            "modelName": "post",
+            "relPath": "posts/working-from-home.md",
+            "data": {
+                "stackbit_model_type": "page",
+                "title": "The Advantages and Disadvantages of Working from Home",
+                "date": "2016-08-22",
+                "thumb_img_path": "images/9.jpg",
+                "thumb_img_alt": "A man sitting at the table",
+                "content_img_path": "images/9.jpg",
+                "content_img_alt": "A man sitting at the table",
+                "excerpt": "Work at home parent is an entrepreneur who works from home and integrates parenting into his or her business activities. They are sometimes referred to as a WAHM (work at home mom) or a WAHD (work at home dad).",
+                "seo": {
+                    "type": "stackbit_page_meta",
+                    "title": "The Advantages and Disadvantages of Working from Home",
+                    "description": "Work at home parent is an entrepreneur who works from home",
+                    "extra": [
+                        {
+                            "name": "og:type",
+                            "value": "article",
+                            "keyName": "property"
+                        },
+                        {
+                            "name": "og:title",
+                            "value": "The Advantages and Disadvantages of Working from Home",
+                            "keyName": "property"
+                        },
+                        {
+                            "name": "og:description",
+                            "value": "Work at home parent is an entrepreneur who works from home",
+                            "keyName": "property"
+                        },
+                        {
+                            "name": "og:image",
+                            "value": "images/9.jpg",
+                            "keyName": "property",
+                            "relativeUrl": true
+                        },
+                        {
+                            "name": "twitter:card",
+                            "value": "summary_large_image"
+                        },
+                        {
+                            "name": "twitter:title",
+                            "value": "The Advantages and Disadvantages of Working from Home"
+                        },
+                        {
+                            "name": "twitter:description",
+                            "value": "Work at home parent is an entrepreneur who works from home"
+                        },
+                        {
+                            "name": "twitter:image",
+                            "value": "images/9.jpg",
+                            "relativeUrl": true
+                        }
+                    ],
+                    "stackbit_model_type": "object"
+                },
+                "template": "post",
+                "stackbit_url_path": "/posts/working-from-home",
+                "content": "\n**Working from home** convallis aenean et tortor at risus viverra adipiscing at in. Maecenas accumsan lacus vel facilisis volutpat est. Nisl suscipit adipiscing bibendum est ultricies. Nulla facilisi cras fermentum odio eu feugiat pretium. Donec ac odio tempor orci dapibus. Eget velit aliquet sagittis id. Morbi non arcu risus quis varius quam quisque id diam. Facilisis gravida neque convallis a cras semper auctor neque vitae. Diam phasellus vestibulum lorem sed risus ultricies tristique nulla aliquet. Aliquam vestibulum morbi blandit cursus risus. Eget mauris pharetra et ultrices neque ornare.\n\n## Advantages and Disadvantages \n\nDignissim diam quis enim lobortis scelerisque. Vitae elementum curabitur vitae nunc. Ultrices neque ornare aenean euismod elementum nisi quis eleifend quam. Et ligula ullamcorper malesuada proin libero nunc consequat interdum. Quam lacus suspendisse faucibus interdum posuere. Bibendum arcu vitae elementum curabitur vitae nunc. Ullamcorper malesuada proin libero nunc. Sit amet risus nullam eget felis eget nunc lobortis. Elementum curabitur vitae nunc sed velit dignissim sodales. Turpis in eu mi bibendum neque egestas congue quisque egestas.\n\n> Success is no accident. It is hard work, perseverance, learning, studying, sacrifice and most of all, love of what you are doing or learning to do. - Pele\n\nFermentum iaculis eu non diam. Lorem sed risus ultricies tristique nulla aliquet enim tortor. Viverra nam libero justo laoreet sit amet cursus. Interdum consectetur libero id faucibus nisl tincidunt eget nullam. Aliquet sagittis id consectetur purus ut. Iaculis eu non diam phasellus. Ipsum dolor sit amet consectetur adipiscing elit duis. Fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec. Dictum sit amet justo donec enim diam. Ultrices eros in cursus turpis massa tincidunt dui. Adipiscing elit ut aliquam purus sit.\n\n## Types Of Work\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Felis donec et odio pellentesque diam volutpat. A diam maecenas sed enim ut sem viverra aliquet. Felis eget nunc lobortis mattis aliquam faucibus. Urna cursus eget nunc scelerisque viverra mauris. Pellentesque elit ullamcorper dignissim cras tincidunt lobortis. Ac tincidunt vitae semper quis lectus nulla at volutpat diam. Sapien faucibus et molestie ac feugiat sed lectus vestibulum. Ac turpis egestas sed tempus urna et pharetra pharetra massa. Vitae semper quis lectus nulla. Velit sed ullamcorper morbi tincidunt ornare. A arcu cursus vitae congue mauris. Amet nulla facilisi morbi tempus iaculis urna.\n\nFermentum iaculis eu non diam. Lorem sed risus ultricies tristique nulla aliquet enim tortor. Viverra nam libero justo laoreet sit amet cursus. Interdum consectetur libero id faucibus nisl tincidunt eget nullam. Aliquet sagittis id consectetur purus ut. Iaculis eu non diam phasellus. Ipsum dolor sit amet consectetur adipiscing elit duis. Fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec. Dictum sit amet justo donec enim diam. Ultrices eros in cursus turpis massa tincidunt dui. Adipiscing elit ut aliquam purus sit.\n"
+            }
+        },
+        {
+            "modelType": "page",
+            "modelName": "page",
+            "relPath": "style-guide.md",
+            "data": {
+                "stackbit_model_type": "page",
+                "title": "Style Guide",
+                "subtitle": "The style guide provides you with a blueprint of default post and page styles. The style guide is also a great reference for suggested typographic treatment and styles for your content.",
+                "seo": {
+                    "type": "stackbit_page_meta",
+                    "title": "Theme Style Guide",
+                    "description": "A reference for suggested typographic treatment and styles for your content",
+                    "extra": [
+                        {
+                            "name": "og:type",
+                            "value": "website",
+                            "keyName": "property"
+                        },
+                        {
+                            "name": "og:title",
+                            "value": "Theme Style Guide",
+                            "keyName": "property"
+                        },
+                        {
+                            "name": "og:description",
+                            "value": "A reference for suggested typographic treatment and styles for your content",
+                            "keyName": "property"
+                        },
+                        {
+                            "name": "og:image",
+                            "value": "images/1.jpg",
+                            "keyName": "property",
+                            "relativeUrl": true
+                        },
+                        {
+                            "name": "twitter:card",
+                            "value": "summary_large_image"
+                        },
+                        {
+                            "name": "twitter:title",
+                            "value": "Theme Style Guide"
+                        },
+                        {
+                            "name": "twitter:description",
+                            "value": "A reference for suggested typographic treatment and styles for your content"
+                        },
+                        {
+                            "name": "twitter:image",
+                            "value": "images/1.jpg",
+                            "relativeUrl": true
+                        }
+                    ],
+                    "stackbit_model_type": "object"
+                },
+                "template": "page",
+                "stackbit_url_path": "/style-guide",
+                "content": "\n**This is a paragraph**. Pellentesque habitant morbi *tristique senectus et netus et malesuada* fames ac turpis egestas. Vestibulum [tortor quam](https://www.google.com), feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit <mark>amet est et sapien ullamcorper</mark> pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi.\n\n# This is an H1\n\nQuisque facilisis erat a dui. Nam malesuada ornare dolor. Cras gravida, this is marked text ornare, erat elit consectetuer erat, id egestas pede nibh eget odio. Proin tincidunt, velit vel porta elementum, magna diam molestie sapien, non aliquet massa pede eu diam. Aliquam iaculis. Fusce et ipsum et nulla tristique facilisis.\n\n## This is an H2\n\nLorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi commodo, ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio lorem non turpis. Nullam sit amet enim. Suspendisse id velit vitae ligula volutpat condimentum. Aliquam erat volutpat. Sed quis velit. Nulla facilisi. Nulla libero.\n\n### This is an H3\n\nLorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi commodo, ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio lorem non turpis. Nullam sit amet enim. Suspendisse id velit vitae ligula volutpat condimentum. Aliquam erat volutpat. Sed quis velit. Nulla facilisi. Nulla libero.\n\n#### This is an H4\n\nQuisque facilisis erat a dui. Nam malesuada ornare dolor. Cras gravida, diam sit amet rhoncus ornare, erat elit consectetuer erat, id egestas pede nibh eget odio. Proin tincidunt, velit vel porta elementum, magna diam molestie sapien, non aliquet massa pede eu diam. Aliquam iaculis.\n\n## Quoting\n\n>Creativity is allowing yourself to make mistakes. Design is knowing which ones to keep. <cite>Scott Adams</cite>\n\nLorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi commodo, ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio lorem non turpis. Nullam sit amet enim. Suspendisse id velit vitae ligula volutpat condimentum. Aliquam erat volutpat. Sed quis velit. Nulla facilisi. Nulla libero.\n\n<hr />\n\n## Unordered Lists\n\n+ Donec non tortor in arcu mollis feugiat\n+ Lorem ipsum dolor sit amet, consectetuer adipiscing elit\n+ Donec id eros eget quam aliquam gravida\n+ Vivamus convallis urna id felis\n+ Nulla porta tempus sapien\n\n## Ordered Lists\n\n1. Donec non tortor in arcu mollis feugiat\n2. Lorem ipsum dolor sit amet, consectetuer adipiscing elit\n3. Donec id eros eget quam aliquam gravida\n4. Vivamus convallis urna id felis\n5. Nulla porta tempus sapien\n\n## Code Blocks\n\nBlocks of code are either fenced by lines with three back-ticks, or are indented with four spaces.\n\n```\n<!-- Some example CSS code -->\nbody {\n  color: #333;\n  font-family: Roboto, Helvetica, Arial, sans-serif;\n  line-height: 1.5;\n}\n```\n\n## Tables\n\n<div class=\"responsive-table\">\n  <table>\n    <caption>Simple table with caption and header</caption>\n    <thead>\n      <tr>\n        <th>Column 1</th>\n        <th>Column 2</th>\n        <th>Column 3</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr>\n        <td>Row 1, Cell 1</td>\n        <td>Row 1, Cell 2</td>\n        <td>Row 1, Cell 3</td>\n      </tr>\n      <tr>\n        <td>Row 2, Cell 1</td>\n        <td>Row 2, Cell 2</td>\n        <td>Row 2, Cell 3</td>\n      </tr>\n    </tbody>\n  </table>\n</div>\n"
+            }
+        },
+        {
+            "modelType": "page",
+            "modelName": "page",
+            "relPath": "thank-you.md",
+            "data": {
+                "stackbit_model_type": "page",
+                "title": "Thank You!",
+                "img_path": "images/thank-you.jpg",
+                "img_alt": "Thank You Led Signage",
+                "template": "page",
+                "stackbit_url_path": "/thank-you",
+                "content": "\nThank you for contacting me! I will get back in touch with you soon.\n\n**Have a great day!**"
+            }
+        }
+    ]
+}
